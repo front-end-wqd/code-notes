@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 1em;
+        }
+        div {
+            display: flex;
+        }
+        input[type="text"], button {
+            padding: 0 .5rem;
+            height: 2rem;
+        }
+        input[type="text"] {
+            box-sizing: border-box;
+        }
+        button {
+            margin-left: .5rem;
+        }
+        p {
+            margin: .5em 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text">
+        <button class="one">一级</button>
+        <button class="two">二级</button>
+    </div>
+    <p></p>
+
+    <script>
+        const input = document.querySelector("input");
+        const one = document.querySelector(".one");
+        const two = document.querySelector(".two");
+        const p = document.querySelector("p");
+
+        class OneSay {
+            constructor(text, color) {
+                this.text = text;
+                this.color = color;
+            }
+            show() {
+                p.innerHTML = this.text + input.value;
+                p.style.color = this.color;
+            }
+            static welcome() {
+                return "hello world";
+            }
+            static show() {
+                p.innerHTML = this.welcome();
+            }
+            set extra(value) {
+                this.value = value;
+                p.innerHTML += this.value;
+            }
+            get extra() {
+                return `${this.text} ${this.value}`;
+            }
+        }
+
+        class TwoSay extends OneSay {
+            constructor(text, color, fontWeight) {
+                super(text, color);
+                this.fontWeight = fontWeight;
+            }
+            show() {
+                p.innerHTML = this.text + p.innerHTML;
+                p.style.color = this.color;
+                p.style.fontWeight = this.fontWeight;
+            }
+        }
+
+        one.addEventListener("click", () => {
+            const say = new OneSay("我知道", "red");
+            say.show();
+            say.extra = "吗";
+            console.log(say.extra);
+        });
+
+        two.addEventListener("click", () => {
+            const say = new TwoSay("你知道", "blue", "bold");
+            say.show();
+        });
+
+        p.addEventListener("click", () => {
+            OneSay.show();
+        });
+    </script>
+</body>
+</html>
