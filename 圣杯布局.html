@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>header</header>
+    <div class="main">
+        <div class="center">center</div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+    <footer>footer</footer>
+    <style>
+        body {
+            margin: 0;
+        }
+        .center, .left, .right, header, footer {
+            text-align: center;
+            padding: 1em 0;
+        }
+        .main {
+            padding: 0 200px;
+        }
+        .main::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .center {
+            background-color: rgba(24, 144, 255, calc(1 / 1));
+            float: left;
+            width: 100%;
+        }
+        .left {
+            background-color: rgba(24, 144, 255, calc(1 / 2));
+            float: left;
+            width: 200px;
+            margin-left: -100%;
+            position: relative;
+            left: -200px;
+        }
+        .right {
+            background-color: rgba(24, 144, 255, calc(1 / 4));
+            float: left;
+            width: 200px;
+            margin-left: -200px;
+            position: relative;
+            left: 200px;
+        }
+        header {
+            background-color: rgba(24, 144, 255, calc(1 / 8));
+        }
+        footer {
+            background-color: rgba(24, 144, 255, calc(1 / 16));
+        }
+    </style>
+</body>
+</html>
