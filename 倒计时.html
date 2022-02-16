@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+            color: white;
+        }
+        div {
+            background-color: #1890ff;
+            padding: .5em;
+            text-align: center;
+        }
+    </style>
+    <main>
+        <div>
+            距离2025年元旦还有
+            <span id="daySpan"></span>
+            <span id="hourSpan"></span>
+            <span id="minuteSpan"></span>
+            <span id="secondSpan"></span>
+        </div>
+    </main>
+    <script>
+        const deadline = new Date("2025-1-1");
+        const countDown = () => {
+            const now = new Date();
+            const rest = deadline - now;
+            let day;
+            let hour;
+            let minute;
+            let second;
+            if (rest < 0) {
+                return 0;
+            }
+            day = Math.floor(rest / 1000 / 60 / 60 / 24);
+            hour = Math.floor(rest / 1000 / 60 / 60 % 24);
+            minute = Math.floor(rest / 1000 / 60 % 60);
+            second = Math.floor(rest / 1000 % 60);
+            daySpan.innerHTML = day + "天";
+            hourSpan.innerHTML = hour + "时";
+            minuteSpan.innerHTML = minute + "分";
+            secondSpan.innerHTML = second + "秒";
+        }
+        countDown();
+        setInterval(countDown, 1000);
+    </script>
+</body>
+</html>
