@@ -9,17 +9,17 @@ function getName(one, two, three) {
 const person = {
     name: "wqd"
 };
-Function.prototype.newCall = function (obj) {
+Function.prototype.newApply = function (obj, arr) {
     let newObj = obj || window;
+    let result;
     newObj.a = this;
-    let newArguments = [];
-    // 保存除了this
-    for (let i = 1; i < arguments.length; i++) {
-        newArguments.push(arguments[i]);
+    if (!arr) {
+        result = newObj.a();
+    } else {
+        result = newObj.a(...arr);
     }
-    let result = newObj.a(...newArguments);
     delete newObj.a;
     return result;
 }
-let result = getName.newCall(person, "A", "B", "C");
+let result = getName.newApply(person, ["A", "B", "C"]);
 console.log(result);
