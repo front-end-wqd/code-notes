@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <div class="left">
+            leftleftleftleftleftleftleftleftleftleft
+        </div>
+        <div class="right">
+            rightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightright
+        </div>
+    </section>
+    <style>
+        section {
+            border: 1px solid red;
+            overflow: hidden;
+        }
+        .left {
+            width: 100px;
+            display: inline-block;
+            word-break: break-all;
+            background-color: rgba(24, 144, 255, calc(1 / 1));
+            padding-top: 999px;
+            margin-top: -999px;
+        }
+        .right {
+            width: 100px;
+            display: inline-block;
+            word-break: break-all;
+            background-color: rgba(24, 144, 255, calc(1 / 2));
+        }
+    </style>
+</body>
+</html>
